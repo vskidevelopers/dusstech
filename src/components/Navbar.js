@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
+    
 return (
-    <div>
-        <header className="header bg-white">
+    <div className="fixed-top">
+        <header className="header navbar-dark bg-dark">
             <div className="container px-0 px-lg-3">
-            <nav className="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
+            <nav className="navbar navbar-expand-lg py-3 px-lg-0  ">
                 <Link className="navbar-brand" to="index.html">
-                <span className="font-weight-bold text-uppercase text-success">
+                <span className="font-weight-bold text-uppercase text-success gideon">
                     Dusstech  <span className="text-primary"> Brands</span>
                 </span>
                 </Link>

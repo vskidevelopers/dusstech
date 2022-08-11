@@ -1,6 +1,10 @@
     .navbar {
         position: relative;
     }
+
+    .header {
+        border-bottom: 2px solid #2ba745;
+    }
     
     .navbar .dropdown-menu {
         border-top: 2px solid #dcb14a;
