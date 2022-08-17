@@ -1,0 +1,151 @@
+.img-border {
+    position: relative;
+    height: 100%;
+    min-height: 400px;
+}
+
+.img-border::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 3rem;
+    bottom: 3rem;
+    border: 5px solid #009CFF;
+    border-radius: 6px;
+}
+
+.img-border img {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    width: calc(100% - 3rem);
+    height: calc(100% - 3rem);
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.section-title::before {
+    position: absolute;
+    content: "";
+    width: calc(100% + 80px);
+    height: 2px;
+    top: 4px;
+    left: -40px;
+    background: #009CFF;;
+    z-index: -1;
+}
+
+.section-title::after {
+    position: absolute;
+    content: "";
+    width: calc(100% + 120px);
+    height: 2px;
+    bottom: 4px;
+    left: -60px;
+    background: #009CFF;;
+    z-index: -1;
+}
+
+.section-title.text-start::before {
+    width: calc(100% + 40px);
+    left: 0;
+}
+
+.section-title.text-start::after {
+    width: calc(100% + 60px);
+    left: 0;
+}
+
+
+/*** Service ***/
+.service-item {
+    position: relative;
+    height: 300px;
+    padding: 0 30px;
+    transition: .5s;
+}
+
+.service-item .service-icon {
+    margin-bottom: 30px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:#009CFF;
+    border-radius: 2px;
+    transform: rotate(-45deg);
+}
+
+.service-item .service-icon i {
+    transform: rotate(45deg);
+}
+
+.service-item a.btn {
+    position: absolute;
+    width: 60px;
+    bottom: -48px;
+    left: 50%;
+    margin-left: -30px;
+    opacity: 0;
+}
+
+.service-item:hover a.btn {
+    bottom: -24px;
+    opacity: 1;
+}
+
+.team-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+}
+
+.team-item .team-text {
+    position: relative;
+    height: 65px;
+    overflow: hidden;
+}
+
+.team-item .team-title {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: .5s;
+}
+
+.team-item:hover .team-title {
+    top: -65px;
+}
+
+.team-item .team-social {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 65px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    transition: .5s;
+}
+
+.team-item .team-social .btn {
+    margin: 0 3px;
+}
+
+.team-item:hover .team-social {
+    top: 0;
+}

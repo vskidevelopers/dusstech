@@ -36,7 +36,7 @@ function Intro() {
         <section className="hero-section hero-section--image clearfix clip">
             <div className="hero-section__wrap">
                 <div className="hero-section__option">
-                    <img src={graphic} />
+                    <img src={graphic} alt="homepage hero"/>
                 </div>
 
                 <div className="container">
