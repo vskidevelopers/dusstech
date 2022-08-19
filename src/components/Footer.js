@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div className="container-fluid text-white" style={{background: "#061429"}}>
+            <div className="container-fluid text-white" style={{background: "#4CAF50"}}>
                 <div className="container text-center">
                     <div className="row justify-content-end">
                         <div className="col-lg-8 col-md-6">
