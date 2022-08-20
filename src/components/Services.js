@@ -5,7 +5,11 @@ import "./About.css"
 function Services() {
     const ref = useRef(null);
     const isInView = useInView(ref, { amount:0.2, once:true});
-    // Animation  wow fadeInUp" data-wow-delay="0.1s"
+    
+    const notAvailable=()=>{
+        alert("Sorry, not currently available. Coming soon tho' ")
+    }
+
     return (
     <div ref={ref} className="container-fluid py-5">
     <div className="container py-5">
@@ -30,7 +34,7 @@ function Services() {
                     <h4 className="mb-3">Graphic Design</h4>
                     <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
                     <Link
-                        className="btn btn-lg btn-primary rounded"to="/">
+                        className="btn btn-lg btn-success rounded"to="/" onClick={notAvailable}>
                         <i className="bi bi-arrow-right"></i>
                     </Link>
                 </div>
@@ -47,7 +51,7 @@ function Services() {
                     <h4 className="mb-3">Printing</h4>
                     <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
                     <Link
-                        className="btn btn-lg btn-primary rounded"to="/">
+                        className="btn btn-lg btn-success rounded"to="/" onClick={notAvailable}>
                         <i className="bi bi-arrow-right"></i>
                     </Link>
                 </div>
@@ -64,7 +68,7 @@ function Services() {
                     <h4 className="mb-3">Branding</h4>
                     <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
                     <Link
-                        className="btn btn-lg btn-primary rounded"to="/">
+                        className="btn btn-lg btn-success rounded"to="/" onClick={notAvailable}>
                         <i className="bi bi-arrow-right"></i>
                     </Link>
                 </div>
@@ -81,7 +85,7 @@ function Services() {
                     <h4 className="mb-3">Web Design</h4>
                     <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
                     <Link
-                        className="btn btn-lg btn-primary rounded"to="/">
+                        className="btn btn-lg btn-success rounded"to="/" onClick={notAvailable}>
                         <i className="bi bi-arrow-right"></i>
                     </Link>
                 </div>
@@ -98,7 +102,7 @@ function Services() {
                     <h4 className="mb-3">Web Hosting</h4>
                     <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
                     <Link
-                        className="btn btn-lg btn-primary rounded"to="/">
+                        className="btn btn-lg btn-success rounded"to="/" onClick={notAvailable}>
                         <i className="bi bi-arrow-right"></i>
                     </Link>
                 </div>
@@ -111,7 +115,7 @@ function Services() {
                 <div class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
                     <h3 class="text-white mb-3">Call Us For Quote</h3>
                     <p class="text-white mb-3">Clita ipsum magna kasd rebum at ipsum amet dolor justo dolor est magna stet eirmod</p>
-                    <h2 class="text-white mb-0">+012 345 6789</h2>
+                    <h3 class="text-white mb-0">+254 722-277-778</h3>
                 </div>
             </div>
         </div>

@@ -17,8 +17,8 @@ function Features() {
             opacity: isInView ? 1 : 0,
             transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.1s"
         }}>
-                <h6 className="section-title bg-white text-center text-primary px-3">Services</h6>
-                <h1 className="display-6 mb-4">We Focuse On Making The Best In All Sectors</h1>
+                <h6 className="section-title bg-white text-center text-primary px-3">Why Choose Us</h6>
+                <h1 className="display-6 mb-4">We Are Here to Grow Your Brand Exponentially</h1>
             </div>
         <div className="row gx-5">
             <div className="col-lg-4">
