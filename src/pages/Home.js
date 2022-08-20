@@ -9,7 +9,7 @@ import Team from '../components/Team'
 
 function Home() {
   return (
-    <div>
+    <div >
         <Intro />
         <Facts />
         <About/>
