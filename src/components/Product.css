@@ -1,0 +1,139 @@
+    .product img {
+    -webkit-filter: grayscale(40%);
+    filter: grayscale(40%);
+    transition: all 0.3s;
+    }
+
+    .product-overlay {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 1rem 0;
+    opacity: 0;
+    transition: all 0.3s;
+    }
+
+    .product-overlay ul li {
+    transition: all 0.3s;
+    }
+
+    .product-overlay ul li:first-of-type {
+    -webkit-transform: translateX(-10px);
+    transform: translateX(-10px);
+    opacity: 0;
+    }
+
+    .product-overlay ul li:last-of-type {
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+    opacity: 0;
+    }
+
+    .product:hover img {
+    opacity: 0.3;
+    }
+
+    .product:hover .product-overlay {
+    opacity: 1;
+    }
+
+    .product:hover .product-overlay li {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+
+    .product .badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 999;
+    }
+
+    .page-item:first-child .page-link {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        }
+        
+    .page-item:last-child .page-link {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    }
+
+    .page-item.active .page-link {
+    color: #fff;
+    background-color: #111111;
+    border-color: #111111;
+    }
+
+    .page-item.disabled .page-link {
+    color: #6c757d;
+    background-color: #fff;
+    border-color: #dee2e6;
+    }
+
+    .page-link {
+    padding: 0.5rem 0.75rem;
+    line-height: 1.25;
+    color: #111111;
+    background-color: none;
+    border: 1px solid #eee;
+    margin: 0.2rem;
+    transition: all 0.3s;
+    }
+
+    .page-link:hover {
+    z-index: 2;
+    color: #111111;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+    }
+
+    .page-link:focus {
+    z-index: 2;
+    outline: 0;
+    box-shadow: none;
+    text-decoration: none;
+    background-color: #111111;
+    color: #fff;
+    }
+
+    .pagination-lg .page-link {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    }
+
+    .pagination-lg .page-item:first-child .page-link {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    }
+
+    .pagination-lg .page-item:last-child .page-link {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    }
+
+    .pagination-sm .page-link {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    }
+
+    .pagination-sm .page-item:first-child .page-link {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    }
+
+    .pagination-sm .page-item:last-child .page-link {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    }

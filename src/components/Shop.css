@@ -1,0 +1,32 @@
+.breadcrumb {
+    background: #f8f9fa;
+}
+
+.breadcrumb-item {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 900;
+    color: #111111;
+}
+
+.breadcrumb-item a {
+    color: inherit;
+    transition: all 0.3s;
+}
+
+.breadcrumb-item a:hover,
+.breadcrumb-item a:focus {
+    color: rgb(13,110,253);
+    text-decoration: none;
+}
+
+.reset-anchor {
+    color: inherit;
+    transition: all 0.3s;
+}
+
+.reset-anchor:hover,
+.reset-anchor:focus {
+    text-decoration: none;
+}
