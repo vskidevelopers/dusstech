@@ -36,7 +36,7 @@ function Item({currentItems}) {
                     </div>
                     </div>
                     <h6>
-                    <Link className="reset-anchor" to="/"> Item no {item +1 }</Link>
+                    <Link className="reset-anchor" to={`/detail/${item}`}> Item no {item}</Link>
                     </h6>
                     <p className="small text-muted">Ksh 2500</p>
                 </div>

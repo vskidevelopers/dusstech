@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 import Hero from '../components/Hero'
 import Sidevbar from '../components/Sidebar'
 import Products from '../components/Products'
@@ -6,9 +6,7 @@ import Footer from "../components/Footer"
 
 
 function Shop() {
-    useEffect(() => {
-        alert(" You are viewing the test view of the proposed shop. Items are currently drawn from a fake API")
-    }, [])
+
     
     return (   
         <div>   

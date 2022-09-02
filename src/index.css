@@ -20,6 +20,18 @@ code {
   font-weight: 800 !important;
 }
 
+.small{
+
+  font-weight: 400;
+}
+
+.text-gray {
+  color: #aaa !important;
+}
+
+a{
+  text-decoration: none;
+}
 
 
 @media (min-width: 991.98px) {

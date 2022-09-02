@@ -20,7 +20,7 @@ import Pagination from './Pagination'
 
 
     useEffect(( ) => {
-      for (let i = 0; i < 100; i++) {
+      for (let i = 1; i < 100; i++) {
         productItems.push(i)
       }
       console.log(productItems)
@@ -33,6 +33,7 @@ import Pagination from './Pagination'
     }, [itemOffset, itemsPerPage, items])
 
     const lastCount= itemOffset +itemsPerPage 
+    console.log(currentItems)
     
   
 
