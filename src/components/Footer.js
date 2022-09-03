@@ -4,7 +4,7 @@
     function Footer() {
         return (
             <div>
-            <div className="container-fluid bg-dark text-light mt-5 ">
+            <div className="container-fluid bg-dark text-light">
                 <div className="container">
                     <div className="row gx-5">
                         <div className="col-lg-4 col-md-6 footer-about">

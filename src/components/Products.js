@@ -1,7 +1,8 @@
   import React,{useState, useEffect} from 'react'
   import {Link} from 'react-router-dom'
-import Item from './Item'
-import Pagination from './Pagination'
+  import axios from 'axios';
+  import Item from './Item'
+  import Pagination from './Pagination'
 
   import './Product.css'
 
@@ -12,31 +13,39 @@ import Pagination from './Pagination'
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
 
-    const itemsPerPage=9
+    const itemsPerPage=2
 
 
-    const productItems = []
 
 
 
     useEffect(( ) => {
-      for (let i = 1; i < 100; i++) {
-        productItems.push(i)
-      }
-      console.log(productItems)
-      setItems(productItems)
+      const fetchData = async () => {
+        try {
+            const res = await axios.get("/api/products/");
+            setItems(res.data);
+            console.log("data from backend :",res.data)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+    fetchData();
+    }, [])
+
+    useEffect(() => {
       const endOffset = itemOffset + itemsPerPage;
       console.log(`Loading items from ${itemOffset} to ${endOffset}`);
       setCurrentItems(items.slice(itemOffset, endOffset));
       setPageCount(Math.ceil(items.length / itemsPerPage));
+    }, [itemOffset, items])
     
-    }, [itemOffset, itemsPerPage, items])
 
     const lastCount= itemOffset +itemsPerPage 
-    console.log(currentItems)
+    console.log("current items ",currentItems)
     
   
-
     return (
       <div>
         <div className="row mb-3 align-items-center">

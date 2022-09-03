@@ -6,12 +6,12 @@ from django.shortcuts import reverse
 
 # Create your models here.
 
-TAGS = (
-    ('N', 'new'),
-    ('H', 'hot'),
-    ('S', 'sale'),
-    ('O', 'offer')
-)
+
+class Tags(models.TextChoices):
+    NEW='new'
+    HOT = 'hot'
+    SALE = 'sale'
+    OFFER = 'offer'
 
 class Category(models.Model):
 
@@ -34,7 +34,7 @@ class Product(models.Model):
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
     category=models.ForeignKey(Category, on_delete=models.CASCADE)
-    tag = models.CharField(choices=TAGS, max_length=1, null=True, blank=True)
+    tag = models.CharField(choices=Tags.choices, max_length=10, null=True, blank=True)
     slug = models.SlugField()
     featured=models.BooleanField(default=False)
 

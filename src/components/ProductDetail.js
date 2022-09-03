@@ -1,34 +1,52 @@
-import React,{ useEffect} from 'react'
+import React,{ useState,useEffect} from 'react'
 import { Link, useParams } from 'react-router-dom'
+import axios from 'axios'
 import Tabs from './Tabs';
-
-import prod from "../images/product-5.jpg"
 
 import "./Details.css"
 
 
 
 function ProductDetail() {
-    const { item } = useParams();
-    const productItems = []
-    console.log(item)
+    const [item, setItem] = useState([])
+    const [quantity, setQuantity] = useState(1)
+    const { slug } = useParams();
+  
+    console.log(slug)
 
     useEffect(( ) => {
-      for (let i = 1; i < 100; i++) {
-        productItems.push(i)
+      const fetchData = async () => {
+        try {
+            const res = await axios.get(`/api/products/${slug}`);
+            setItem(res.data);
+            console.log("data from backend :",res.data)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+    fetchData();
+    },[slug])
+
+    const handleIncrease = ()=>{
+      setQuantity(quantity+1)
+    }
+
+    const handeDecrease = ()=>{
+      setQuantity(quantity-1)
+      if (quantity >=1){
+          setQuantity(1)
       }
-      console.log(productItems)
-    })
 
-    const thisProduct = productItems.find(prod => prod === item)
-    console.log(thisProduct)
-
+    }
+    
     
   return (
       <div className='row mb-5'>
           <div className="col-lg-6">
-          <div className="m-sm-0" style={{width: "345px"}}>
-            <img  src={prod} alt="product" className='img-fluid'/>
+          <div className="m-sm-0" style={{width: "100%"}}>
+            <img  src={item.image} alt="product" className='img-fluid'/>
           </div>
           </div>
           <div className="col-lg-6">
@@ -49,13 +67,13 @@ function ProductDetail() {
                   <i className="fas fa-star small text-warning"></i>
                 </li>
               </ul>
-              <h1>Red digital smartwatch</h1>
-              <p className="text-muted lead">$250</p>
+              <h1>{item.title}</h1>
+              
+              <p className="text-muted lead">Ksh {item.discount_price ? item.discount_price: item.price}</p>
+              {item.discount_price ?   <p className="text-muted lead">Was <span style={{textDecoration:"line-through"}}>Ksh {item.price}</span></p>: null }
+            
               <p className="text-small mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut
-                ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus
-                et magnis dis parturient montes nascetur ridiculus mus.
-                Vestibulum ultricies aliquam convallis.
+                {item.description}
               </p>
               <div className="row align-items-stretch mb-4">
                 <div className="col-sm-5 px-sm-0">
@@ -65,15 +83,15 @@ function ProductDetail() {
                     <span className="small text-uppercase text-gray mx-4 no-select"
                       >Quantity</span>
                     <div className="quantity">
-                      <button className="dec-btn p-0">
+                      <button className="dec-btn p-0" onClick={handeDecrease}>
                         <i className="fas fa-caret-left"></i>
                       </button>
                       <input
                         className="form-control border-0 shadow-0 p-0"
                         type="text"
-                        value="1"
+                        value={quantity}
                       />
-                      <button className="inc-btn p-0">
+                      <button className="inc-btn p-0" onClick={handleIncrease}>
                         <i className="fas fa-caret-right"></i>
                       </button>
                     </div>
@@ -81,7 +99,7 @@ function ProductDetail() {
                 </div>
                 <div className="col-sm-3 ps-sm-0">
                   <Link
-                    className="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0"
+                    className="btn btn-success btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" style={{textDecorationLine:"none"}}
                     to="/">
                       Add to cart
                       </Link>
@@ -93,11 +111,11 @@ function ProductDetail() {
               <ul className="list-unstyled small d-inline-block">
                 <li className="px-3 py-3 mb-1 bg-white text-muted">
                   <strong className="text-uppercase text-dark">Category:</strong>
-                  <Link className="reset-anchor ms-3" to="/">Demo Products</Link>
+                  <Link className="reset-anchor ms-3" to="/">{item.category}</Link>
                 </li>
                 <li className="px-3 py-3 mb-1 bg-white text-muted">
                   <strong className="text-uppercase text-dark">Tags:</strong
-                  ><Link className="reset-anchor ms-3" to="/">Innovation</Link>
+                  ><Link className="reset-anchor ms-3" to="/">{item.tag}</Link>
                 </li>
               </ul>
           </div>

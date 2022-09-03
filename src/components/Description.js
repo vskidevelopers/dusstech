@@ -2,7 +2,7 @@ import React from 'react'
 
 function Description() {
   return (
-    <div> <h6 class="text-uppercase">Product description</h6>
+    <div> <h6 class="text-uppercase text-primary">Product description</h6>
     <p class="text-muted text-small mb-0">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
       do eiusmod tempor incididunt ut labore et dolore magna aliqua.
