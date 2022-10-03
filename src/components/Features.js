@@ -18,7 +18,7 @@ function Features() {
             transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.1s"
         }}>
                 <h6 className="section-title bg-white text-center text-primary px-3">Why Choose Us</h6>
-                <h1 className="display-6 mb-4">We Are Here to Grow Your Brand Exponentially</h1>
+                <h1 className="display-6 mb-4">We help your brand connect with people</h1>
             </div>
         <div className="row gx-5">
             <div className="col-lg-4">
@@ -28,14 +28,14 @@ function Features() {
                             opacity: isInView ? 1 : 0,
                             transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
                         }}
-                        className="col-12 mt-5">
+                        className="col-12 mt-2">
                         <div className="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style={{width: "60px", height: "60px"}}>
                             <i className="fa fa-cubes text-white"></i>
                         </div>
-                        <h4>Best In Industry</h4>
-                        <p className="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        <h4>Digital Platforms</h4>
+                        <p className="mb-0">Realisation of your digital aspirations will need agility,capacity and scalabity. We go it covered</p>
                     </div>
-                    <div className="col-12 mt-5"
+                    <div className="col-12 mt-2"
                             style={{
                                 transform: isInView ? "none" : "translateY(100vh)",
                                 opacity: isInView ? 1 : 0,
@@ -45,8 +45,8 @@ function Features() {
                         <div className="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style={{width: "60px", height: "60px"}}>
                             <i className="fa fa-award text-white"></i>
                         </div>
-                        <h4>Award Winning</h4>
-                        <p className="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        <h4>Digital Experience</h4>
+                        <p className="mb-0">We help you create that seamless digital experience that generates adoption, engagement and satisfaction.</p>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@ function Features() {
             </div>
             <div className="col-lg-4">
                 <div className="row gx-5">
-                    <div className="col-12 mt-5" style={{
+                    <div className="col-12 mt-2" style={{
                          transform: isInView ? "none" : "translateY(100vh)",
                          opacity: isInView ? 1 : 0,
                          transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.7s"
@@ -69,10 +69,10 @@ function Features() {
                         <div className="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style={{width: "60px", height: "60px"}}>
                             <i className="fa fa-users-cog text-white"></i>
                         </div>
-                        <h4>Professional Staff</h4>
-                        <p className="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        <h4>Digital Direction</h4>
+                        <p className="mb-0">We focus on helping clients navigate the sometimes complex digital landscape and provide expertise that generate value</p>
                     </div>
-                    <div className="col-12 mt-5" style={{
+                    <div className="col-12 mt-2" style={{
                          transform: isInView ? "none" : "translateY(100vh)",
                          opacity: isInView ? 1 : 0,
                          transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 1.3s"
@@ -81,7 +81,7 @@ function Features() {
                             <i className="fa fa-phone-alt text-white"></i>
                         </div>
                         <h4>24/7 Support</h4>
-                        <p className="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        <p className="mb-0">Our support staff is always ready to help you out. in case of any queries you can call +254 7222 277 778 </p>
                     </div>
                 </div>
             </div>
