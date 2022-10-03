@@ -32,7 +32,7 @@ function Services() {
                         <i className="fa fa-shield-alt text-white"></i>
                     </div>
                     <h4 className="mb-3">Graphic Design</h4>
-                    <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
+                    <p className="m-0">Dusstech Brands has been in the industry long enough to master the different aspects of graphic design and has a 10-year work portfolio to show for it</p>
                     <Link
                         className="btn btn-lg btn-success rounded"to="/" onClick={notAvailable}>
                         <i className="bi bi-arrow-right"></i>
@@ -49,7 +49,7 @@ function Services() {
                         <i className="fa fa-chart-pie text-white"></i>
                     </div>
                     <h4 className="mb-3">Printing</h4>
-                    <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
+                    <p className="m-0">Dusstech is well equiped with high quality printers, plotters and large formart printers that guarantees clean and professional experience  </p>
                     <Link
                         className="btn btn-lg btn-success rounded"to="/" onClick={notAvailable}>
                         <i className="bi bi-arrow-right"></i>
@@ -66,7 +66,7 @@ function Services() {
                         <i className="fa fa-code text-white"></i>
                     </div>
                     <h4 className="mb-3">Branding</h4>
-                    <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
+                    <p className="m-0">From company creation to launching, Dusstech brands are with you all through providing a seamless experience in all branding fields</p>
                     <Link
                         className="btn btn-lg btn-success rounded"to="/" onClick={notAvailable}>
                         <i className="bi bi-arrow-right"></i>
@@ -82,8 +82,8 @@ function Services() {
                     <div className="service-icon">
                         <i className="fab fa-android text-white"></i>
                     </div>
-                    <h4 className="mb-3">Web Design</h4>
-                    <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
+                    <h4 className="mb-3">Web Development</h4>
+                    <p className="m-0">Dusstech deals with mordern web development trends to create custom web systems that fit the clients needs.</p>
                     <Link
                         className="btn btn-lg btn-success rounded"to="/" onClick={notAvailable}>
                         <i className="bi bi-arrow-right"></i>
@@ -99,8 +99,8 @@ function Services() {
                     <div className="service-icon">
                         <i className="fa fa-search text-white"></i>
                     </div>
-                    <h4 className="mb-3">Web Hosting</h4>
-                    <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
+                    <h4 className="mb-3">Digital Marketing</h4>
+                    <p className="m-0">Dusstech is well equiped with experts that provide professional digital marketing assistance.</p>
                     <Link
                         className="btn btn-lg btn-success rounded"to="/" onClick={notAvailable}>
                         <i className="bi bi-arrow-right"></i>
