@@ -12,7 +12,7 @@
                                 <Link to="/" >
                                     <h1 className="m-0 text-white"><i className="fa fa-user-tie me-2"></i>NewsLetter</h1>
                                 </Link>
-                                <p className="mt-3 mb-4">Lorem diam sit erat dolor elitr et, diam lorem justo amet clita stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam amet erat lorem stet eos. Diam amet et kasd eos duo.</p>
+                                <p className="mt-3 mb-4">We create annual Newsletters covering different aspects of graphic design that we incopare at Dusstech Brands.</p>
                                 <form action="">
                                     <div className="input-group">
                                         <input type="text" className="form-control border-white p-3" placeholder="Your Email" />
