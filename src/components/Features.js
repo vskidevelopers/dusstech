@@ -35,7 +35,7 @@ function Features() {
                         <h4>Digital Platforms</h4>
                         <p className="mb-0">Realisation of your digital aspirations will need agility,capacity and scalabity. We go it covered</p>
                     </div>
-                    <div className="col-12 mt-2"
+                    <div className="col-12 mt-3"
                             style={{
                                 transform: isInView ? "none" : "translateY(100vh)",
                                 opacity: isInView ? 1 : 0,
@@ -72,7 +72,7 @@ function Features() {
                         <h4>Digital Direction</h4>
                         <p className="mb-0">We focus on helping clients navigate the sometimes complex digital landscape and provide expertise that generate value</p>
                     </div>
-                    <div className="col-12 mt-2" style={{
+                    <div className="col-12 mt-3" style={{
                          transform: isInView ? "none" : "translateY(100vh)",
                          opacity: isInView ? 1 : 0,
                          transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 1.3s"
