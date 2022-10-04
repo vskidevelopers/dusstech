@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import './Shop.css'
 
-function Hero() {
+function Hero({breadcrumb, breadcrumbActive}) {
   return (
     <section className="py-5 bg-light">
     <div className="container">
@@ -15,10 +15,10 @@ function Hero() {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb justify-content-lg-end mb-0 px-0">
               <li className="breadcrumb-item">
-                <Link to="/">Home</Link>
+                <Link to="/">{breadcrumb}</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
-                Shop
+                {breadcrumbActive}
               </li>
             </ol>
           </nav>

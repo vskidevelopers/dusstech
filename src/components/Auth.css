@@ -1,0 +1,78 @@
+    .login__Div {
+        padding-top: 7em;
+        font-family: "Lato", Arial, sans-serif;
+    }
+
+    .login-wrap {
+        position: relative;
+        background: #fff;
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 24%);
+        -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+        box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 24%);
+    }
+
+    .login-wrap .icon {
+        width: 80px;
+        height: 80px;
+        background: #1089ff;
+        border-radius: 50%;
+        font-size: 30px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+
+    .login-wrap .icon span {
+        color: #fff;
+    }
+
+    .login-wrap h3 {
+        font-weight: 300;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    /* Tabs UI */
+
+    .login_tab  {
+        width: 60%;
+        margin: 0 auto 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 2rem;
+        padding-left: 0px;
+    }
+
+    @media (max-width: 768px) {
+        .login_tab  {
+        width: 90%;
+        }
+    }
+    .login_tab  li {
+        width: 50%;
+        padding: 0.5rem;
+        list-style: none;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.7s;
+        border-bottom-left-radius: 2rem;
+        border-top-left-radius: 2rem;
+    }
+    .login_tab li:nth-child(2) {
+        border-radius: 0;
+        border-bottom-right-radius: 2rem;
+        border-top-right-radius: 2rem;
+    }
+    .login_tab li:hover {
+        background: rgba(50, 224, 196, 0.15);
+    }
+    .login_tab li.active {
+        background: #39A2DB;
+    }

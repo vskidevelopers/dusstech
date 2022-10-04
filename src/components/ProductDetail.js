@@ -1,6 +1,8 @@
 import React,{ useState,useEffect} from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
+// import { useDispatch } from 'react-redux';
+// import {addToCart} from '../redux/cartSlice';
 import Tabs from './Tabs';
 
 import "./Details.css"
@@ -8,6 +10,7 @@ import "./Details.css"
 
 
 function ProductDetail() {
+  // const dispatch=useDispatch()
     const [item, setItem] = useState([])
     const [quantity, setQuantity] = useState(1)
     const { slug } = useParams();
@@ -98,15 +101,15 @@ function ProductDetail() {
                   </div>
                 </div>
                 <div className="col-sm-3 ps-sm-0">
-                  <Link
+                  <button
                     className="btn btn-success btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" style={{textDecorationLine:"none"}}
-                    to="/">
+                    to="/cart">
                       Add to cart
-                      </Link>
+                      </button>
                 </div>
               </div>
               <Link className="btn btn-link text-dark p-0 mb-4" to="/">
-                <i className="far fa-heart mx-3"></i>Add to wish list
+                <i className="far fa-heart mr-3"></i>Add to wish list
                 </Link><br />
               <ul className="list-unstyled small d-inline-block">
                 <li className="px-3 py-3 mb-1 bg-white text-muted">

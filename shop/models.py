@@ -1,10 +1,63 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.template.defaultfilters import slugify
-from django.shortcuts import reverse
+
 
 
 # Create your models here.
+
+class UserManager(BaseUserManager):
+    def create_user(self, email, username, password=None):
+        if not email:
+            return ValueError("Users must have an email address")
+        if not username:
+            return ValueError("Users must have a username")
+        
+        user=self.model(
+            email=self.normalize_email(email).lower(),
+            username=username,
+            password=password,
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, username, password=None):
+        user = self.create_user(
+            email=self.normalize_email(email).lower(),
+            password = password,
+            username = username,
+        )
+        user.is_staff = True
+        user.is_admin = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
+
+class User(AbstractBaseUser):
+    email=models.EmailField(verbose_name='email', max_length=254, unique=True)
+    username=models.CharField(verbose_name='username',max_length=100, unique=True)
+    date_joined=models.DateTimeField(auto_now_add=True, verbose_name="date_joined")
+    is_admin=models.BooleanField(default=False)
+    is_active=models.BooleanField(default=True)
+    is_superuser=models.BooleanField(default=False)
+    is_staff=models.BooleanField(default=False)
+
+    objects=UserManager()
+
+    USERNAME_FIELD ='email'
+    REQUIRED_FIELDS=['username',]
+    
+    def __str__(self):
+        return self.username
+    
+    def has_perm(self, permission, obj=None):
+        return self.is_admin
+
+    def has_module_perms(self, app_label):
+        return self.is_superuser
+
 
 
 class Tags(models.TextChoices):

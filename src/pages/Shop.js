@@ -11,7 +11,7 @@ function Shop() {
     return (   
         <div>   
             <div className='container' style={{marginTop:"5%"}}>
-                <Hero/>
+                <Hero breadcrumb="Home" breadcrumbActive="Shop"/>
                 <div className='py-5'>
                     <div className='row'>
                         <div className='col-lg-3 order-2 order-lg-1'>

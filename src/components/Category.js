@@ -24,7 +24,7 @@ function Categories() {
     <div>
       {categories.map((category)=>{
         return(
-          <div>
+          <div key="category.id">
           <div className="py-2 px-4 bg-success text-white mb-3">
           <strong className="small text-uppercase font-weight-bold">
               {category.title}
@@ -34,7 +34,7 @@ function Categories() {
         className="list-unstyled small text-muted ps-lg-4 font-weight-normal">
           {category.subs.map((sub)=>{
             return(
-              <CategoryItem  name ={sub} path="/"/>
+              <CategoryItem name ={sub} path="/"/>
             );
           })}
         
