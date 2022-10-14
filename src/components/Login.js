@@ -1,15 +1,37 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+import { login } from '../store/Auth-Slice';
 
 
 const Login = () => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+	const { loading, isAuthenticated } = useSelector(
+		state => state.user
+	);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(`{'userName': ${userName} , 'password' : ${password} }`);
-  };
+	const [formData, setFormData] = useState({
+		email: '',
+		password: '',
+	});
+
+	// useEffect(() => {
+	// 	if (registered) dispatch(resetRegistered());
+	// }, [registered, dispatch]);
+
+	const { email, password } = formData;
+
+	const onChange = e => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	};
+
+	const onSubmit = e => {
+		e.preventDefault();
+
+		dispatch(login(formData));
+	};
+
+	if (isAuthenticated) return <Navigate to='/shop' />;
 
   return (
   
@@ -20,41 +42,48 @@ const Login = () => {
                 <span className="fas fa-user"></span>
               </div>
               <h3 className="text-center mb-4">Sign In</h3>
-              <form onSubmit={handleSubmit} className="login-form">
-                <div class="form-group">
-                  <input
-                    type="text"
-                    className="form-control rounded-left"
-                    placeholder="Username"
-                    required
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                  />
-                </div>
-                <div className="form-group d-flex">
-                  <input
-                    type="password"
-                    className="form-control rounded-left"
-                    placeholder="Password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <button
-                    type="submit"
-                    className="form-control btn btn-primary rounded submit px-3"
-                  >
-                    Login
-                  </button>
-                </div>
-                <div className="form-group d-md-flex">
-                  <div className="w-100 text-md-right">
-                    <Link to='/'>Forgot Password</Link>
-                  </div>
-                </div>
-              </form>
+              <form className='mt-5' onSubmit={onSubmit}>
+				<div className='form-group'>
+					<label className='form-label' htmlFor='email'>
+						Email
+					</label>
+					<input
+						className='form-control form-input'
+						type='email'
+						name='email'
+						onChange={onChange}
+						value={email}
+						required
+					/>
+				</div>
+				<div className='form-group mt-3'>
+					<label className='form-label' htmlFor='password'>
+						Password
+					</label>
+					<input
+						className='form-control form-input'
+						type='password'
+						name='password'
+						onChange={onChange}
+						value={password}
+						required
+					/>
+				</div>
+				{loading ? (
+					<div className='spinner-border text-primary' role='status'>
+						<span className='visually-hidden'>Loading...</span>
+					</div>
+				) : (
+          <div class="d-grid  col-6 mx-auto">
+          <button
+              type="submit"
+              className=" btn  btn-outline-success rounded px-3"
+            >
+              Login
+            </button>
+            </div>
+				)}
+			</form>
             </div>
           </div>
         </div>

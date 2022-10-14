@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product
+from .models import Category, Product,Cart,CartItem
 from django.contrib.auth import get_user_model
 
 User=get_user_model()
@@ -10,6 +10,21 @@ class UserAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     exclude=('slug',)
 
+class CartAdmin(admin.ModelAdmin):
+    list_display = ['user',
+                    'ordered',
+                    'ordered_date',
+                    ]
+    list_display_links = [
+        'user',
+    ]
+    list_filter = ['ordered',]
+    search_fields = [
+        'user__username',
+    ]
+
 admin.site.register(User, UserAdmin)
+admin.site.register(Cart,CartAdmin)
+admin.site.register(CartItem)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category)

@@ -1,8 +1,55 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../store/Auth-Slice";
 import "./Navbar.css";
 
 const Navbar = () => {
+    const {isAuthenticated }=useSelector((state)=>state.user)
+    const dispatch =useDispatch()
+
+    const authLinks= (
+        <>
+            <li className="nav-item">
+                <Link className="nav-link" to="#">
+                    {" "}
+                    <i className="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart
+                    <small className="text-gray">(2)</small>
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link className="nav-link" to="#">
+                    {" "}
+                    <i className="fa fa-heart mx-1"></i>
+                    <small className="text-gray"> (0)</small>
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link  className="nav-link" onClick={()=>dispatch(logout())} to="#">
+                    {" "}
+                    <i className="fas fa-user-alt mr-1 text-gray"></i>Logout
+                </Link>
+            </li>
+        </>
+    )
+
+    const guestLinks= (
+        <>
+
+            <li className="nav-item">
+                <Link to="/auth" className="nav-link">
+                    {" "}
+                    <i className="fas fa-user-alt mr-1 text-gray"></i>Login
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link to="/auth" className="nav-link">
+                    {" "}
+                    <i className="fas fa-user-alt mr-1 text-gray"></i>Register
+                </Link>
+            </li>
+        </>
+    )
     
 return (
     <div className="fixed-top">
@@ -44,26 +91,7 @@ return (
 
                     </ul>
                     <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                        <Link className="nav-link" to="#">
-                            {" "}
-                            <i className="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart
-                            <small className="text-gray">(2)</small>
-                        </Link>
-                        </li>
-                        <li className="nav-item">
-                        <Link className="nav-link" to="#">
-                            {" "}
-                            <i className="fa fa-heart mr-1"></i>
-                            <small className="text-gray"> (0)</small>
-                        </Link>
-                        </li>
-                        <li className="nav-item">
-                        <Link to="/login" className="nav-link">
-                            {" "}
-                            <i className="fas fa-user-alt mr-1 text-gray"></i>Login
-                        </Link>
-                        </li>
+                        {isAuthenticated?authLinks:guestLinks}
                     </ul>
                     </div>
                 </div>

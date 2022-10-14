@@ -3,10 +3,13 @@ import Login from "../components/Login";
 import Register from "../components/Register";
 
 import '../components/Auth.css'
+import { useSelector } from "react-redux";
+
 
  
 const Auth = () => {
-  const [activePage, setActivePage] = useState("login");
+  const [activePage, setActivePage] = useState("register");
+  const {registered} =useSelector((state)=>state.user)
   //  Functions to handle Tab Switching
   const handleLogin = () => {
     // update the state to tab1
@@ -16,10 +19,11 @@ const Auth = () => {
     // update the state to review
     setActivePage("register");
   };
+  if(registered) return <Login />;
   return (
     <div className="login__Div">
     <div className="container">
-        {activePage === "login" ? <Login /> : <Register />}
+        {activePage === "register" ? <Register />:<Login/>}
         <ul className="login_tab nav ">
         <li 
           className={activePage === "login" ? "active " : " "}

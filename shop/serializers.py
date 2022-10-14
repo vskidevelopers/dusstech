@@ -1,9 +1,10 @@
+from dataclasses import fields
 from django.contrib.auth.password_validation import validate_password
 from django.core import exceptions
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
-from .models import Product
+from .models import Product,CartItem,Cart
 User=get_user_model()
 
 class UserCreateSerializer(serializers.ModelSerializer):
@@ -51,3 +52,52 @@ class ProductSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'url': {'lookup_field': 'slug'}
         }
+
+    class CartSerializer(serializers.ModelSerializer):
+        class Meta:
+            model=Cart
+            fields=[
+                'id',
+                'user',
+                'items',
+                'ordered'
+            ]
+
+
+class CartItemSerializer(serializers.ModelSerializer):
+    item = serializers.SerializerMethodField()
+    final_price = serializers.SerializerMethodField()
+    class Meta:
+        model=CartItem
+        fields =[
+            'id',
+            'user',
+            'ordered',
+            'item',
+            'quantity',
+            'final_price'
+        ]
+    def get_final_price(self, obj):
+            return obj.get_final_price()
+
+    def get_item(self, obj):
+        return ProductSerializer(obj.item).data
+
+class CartSerializer(serializers.ModelSerializer):
+    cart_items = serializers.SerializerMethodField()
+    total = serializers.SerializerMethodField()
+    class Meta:
+        model =Cart
+        fields=[
+            'id',
+            'user',
+            'cart_items',
+            'ordered',
+            'total'
+        ]
+
+    def get_cart_items(self, obj):
+        return CartItemSerializer(obj.items.all(), many=True).data
+    
+    def get_total(self, obj):
+        return obj.get_total()

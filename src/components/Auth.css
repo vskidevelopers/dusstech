@@ -3,6 +3,16 @@
         font-family: "Lato", Arial, sans-serif;
     }
 
+    .form-control{
+        border: 1px solid #ced4da;
+    }
+
+    .form-input{
+        border:0;
+        border-bottom: 1px solid #ced4da;
+        border-radius: 10px;
+    }
+
     .login-wrap {
         position: relative;
         background: #fff;

@@ -23,6 +23,7 @@ function ProductDetail() {
             const res = await axios.get(`/api/products/${slug}`);
             setItem(res.data);
             console.log("data from backend :",res.data)
+            console.log(typeof(res.data.rating));
         }
         catch (err) {
             console.log(err)
@@ -31,6 +32,10 @@ function ProductDetail() {
 
     fetchData();
     },[slug])
+
+    const rating=Array(item.rating)
+    console.log("ratings > ",rating.length)
+    console.log("ratings type > ",typeof(rating.length))
 
     const handleIncrease = ()=>{
       setQuantity(quantity+1)
@@ -44,6 +49,16 @@ function ProductDetail() {
 
     }
     
+    const displayStars =(num)=>{
+      for (let i = 1; i >= num.length ; i++) {
+        return(
+          <li className="list-inline-item m-0" >
+              <i className="fas fa-star small text-warning"></i>
+          </li>
+        )
+        
+      }
+    }
     
   return (
       <div className='row mb-5'>
@@ -54,21 +69,17 @@ function ProductDetail() {
           </div>
           <div className="col-lg-6">
               <ul className="list-inline mb-2">
-                <li className="list-inline-item m-0">
-                  <i className="fas fa-star small text-warning"></i>
-                </li>
-                <li className="list-inline-item m-0">
-                  <i className="fas fa-star small text-warning"></i>
-                </li>
-                <li className="list-inline-item m-0">
-                  <i className="fas fa-star small text-warning"></i>
-                </li>
-                <li className="list-inline-item m-0">
-                  <i className="fas fa-star small text-warning"></i>
-                </li>
-                <li className="list-inline-item m-0">
-                  <i className="fas fa-star small text-warning"></i>
-                </li>
+                  {displayStars(rating)}
+                {/* {.map((rate)=>{
+                  return (
+                    <li className="list-inline-item m-0" key={rate}>
+                      <i className="fas fa-star small text-warning"></i>
+                  </li>
+                  )
+                }
+                )} */}
+
+                  
               </ul>
               <h1>{item.title}</h1>
               
@@ -101,11 +112,11 @@ function ProductDetail() {
                   </div>
                 </div>
                 <div className="col-sm-3 ps-sm-0">
-                  <button
+                  <Link
                     className="btn btn-success btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" style={{textDecorationLine:"none"}}
                     to="/cart">
                       Add to cart
-                      </button>
+                      </Link>
                 </div>
               </div>
               <Link className="btn btn-link text-dark p-0 mb-4" to="/">
