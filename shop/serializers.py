@@ -40,7 +40,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email',)
+        fields = ('id','username', 'email',)
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -53,51 +53,36 @@ class ProductSerializer(serializers.ModelSerializer):
             'url': {'lookup_field': 'slug'}
         }
 
-    class CartSerializer(serializers.ModelSerializer):
-        class Meta:
-            model=Cart
-            fields=[
-                'id',
-                'user',
-                'items',
-                'ordered'
-            ]
-
-
 class CartItemSerializer(serializers.ModelSerializer):
     item = serializers.SerializerMethodField()
     final_price = serializers.SerializerMethodField()
     class Meta:
         model=CartItem
-        fields =[
-            'id',
-            'user',
-            'ordered',
-            'item',
-            'quantity',
-            'final_price'
-        ]
+        fields ='__all__'
     def get_final_price(self, obj):
             return obj.get_final_price()
 
     def get_item(self, obj):
         return ProductSerializer(obj.item).data
+    
+    def get_cart(self,obj):
+        return CartSerializer(obj.cart)
 
 class CartSerializer(serializers.ModelSerializer):
-    cart_items = serializers.SerializerMethodField()
-    total = serializers.SerializerMethodField()
+    # cart_items = serializers.SerializerMethodField()
+    # total = serializers.SerializerMethodField()
     class Meta:
         model =Cart
         fields=[
             'id',
             'user',
-            'cart_items',
+            # 'cart_items',
             'ordered',
-            'total'
+            # 'total'
         ]
 
-    def get_cart_items(self, obj):
-        return CartItemSerializer(obj.items.all(), many=True).data
+    # def get_cart_items(self, obj):
+    #     return CartItemSerializer(obj.items.all(), many=True).data
     
-    def get_total(self, obj):
-        return obj.get_total()
+    # def get_total(self, obj):
+    #     return obj.get_total()

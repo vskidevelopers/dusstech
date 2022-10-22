@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { register } from '../store/Auth-Slice';
+import Loader from './Loader';
 
 const Register = () => {
 	const dispatch = useDispatch();
@@ -82,9 +83,7 @@ const Register = () => {
 				</div>
 
 				{loading ? (
-					<div className='spinner-border text-primary' role='status'>
-						
-					</div>
+					<Loader />
 				) : (
           <div class="d-grid  col-6 mx-auto">
           <button

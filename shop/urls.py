@@ -1,7 +1,7 @@
 from django.urls import path,include
 from rest_framework import routers
 
-from .views import  ProductView,RegisterView, RetrieveUserView,CartItemDeleteView,CartView
+from .views import  AddToCartView, ProductView,RegisterView, RetrieveUserView,CartItemDeleteView,CartView
 
 
 router=routers.DefaultRouter()
@@ -20,4 +20,5 @@ urlpatterns = [
     # path('add-to-cart/', AddToCartView.as_view(), name='add-to-cart'),
     path('order-items/<pk>/delete/', CartItemDeleteView.as_view(), name='order-item-delete'),
     path('cart/<int:id>/', CartView.as_view(), name='cart-summary'),
+    path('cart/add-to-cart/', AddToCartView.as_view(), name='add-to-cart'),
 ]

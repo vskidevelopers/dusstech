@@ -11,7 +11,9 @@ class ProductAdmin(admin.ModelAdmin):
     exclude=('slug',)
 
 class CartAdmin(admin.ModelAdmin):
-    list_display = ['user',
+    list_display = [
+                    'id',
+                    'user',
                     'ordered',
                     'ordered_date',
                     ]

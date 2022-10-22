@@ -3,8 +3,11 @@ import Footer from '../components/Footer'
 import ProductDetail from '../components/ProductDetail'
 
 
+
+
 function Detail() {
-  return (
+
+return (
     <>
     <section class="py-5 bg-light">   
             <div className='container' style={{marginTop:"5%"}}>

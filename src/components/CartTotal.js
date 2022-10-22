@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function CartTotal() {
+function CartTotal({cart}) {
     return (
         <div className="card border-0 rounded-0 p-lg-4 bg-light">
         <div className="card-body">
@@ -12,7 +12,7 @@ function CartTotal() {
             >
             <strong className="text-uppercase small font-weight-bold"
                 >Subtotal</strong
-            ><span className="text-muted small">$250</span>
+            ><span className="text-muted small">Ksh {cart.cart.total}</span>
             </li>
             <li className="border-bottom my-2"></li>
             <li
@@ -20,7 +20,7 @@ function CartTotal() {
             >
             <strong className="text-uppercase small font-weight-bold"
                 >Total</strong
-            ><span>$250</span>
+            ><span>Ksh {cart.cart.total}</span>
             </li>
             <li>
             <form action="#">

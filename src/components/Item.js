@@ -39,7 +39,7 @@ function Item({currentItems}) {
                     <h6>
                     <Link className="reset-anchor" to={`/detail/${item.slug}`}> {item.title}</Link>
                     </h6>
-                    <p className="small text-muted">Ksh 2500</p>
+                    <p className="small text-muted">Ksh {item.price}</p>
                 </div>
                 </div>
     ))}

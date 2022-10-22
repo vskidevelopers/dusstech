@@ -1,8 +1,8 @@
 import React,{ useState,useEffect} from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams} from 'react-router-dom'
 import axios from 'axios'
-// import { useDispatch } from 'react-redux';
-// import {addToCart} from '../redux/cartSlice';
+import { useDispatch } from 'react-redux';
+import {addToCart, } from '../store/Cart-Slice';
 import Tabs from './Tabs';
 
 import "./Details.css"
@@ -10,17 +10,17 @@ import "./Details.css"
 
 
 function ProductDetail() {
-  // const dispatch=useDispatch()
+  const dispatch=useDispatch()
     const [item, setItem] = useState([])
-    const [quantity, setQuantity] = useState(1)
     const { slug } = useParams();
   
-    console.log(slug)
-
+    console.log("product slug >",slug)
+  
     useEffect(( ) => {
       const fetchData = async () => {
         try {
-            const res = await axios.get(`/api/products/${slug}`);
+            const res = await axios.get(`/api/shop/products/${slug}/`);
+            
             setItem(res.data);
             console.log("data from backend :",res.data)
             console.log(typeof(res.data.rating));
@@ -29,25 +29,12 @@ function ProductDetail() {
             console.log(err)
         }
     }
-
     fetchData();
-    },[slug])
+    },[slug])  
 
     const rating=Array(item.rating)
     console.log("ratings > ",rating.length)
     console.log("ratings type > ",typeof(rating.length))
-
-    const handleIncrease = ()=>{
-      setQuantity(quantity+1)
-    }
-
-    const handeDecrease = ()=>{
-      setQuantity(quantity-1)
-      if (quantity >=1){
-          setQuantity(1)
-      }
-
-    }
     
     const displayStars =(num)=>{
       for (let i = 1; i >= num.length ; i++) {
@@ -92,29 +79,21 @@ function ProductDetail() {
               <div className="row align-items-stretch mb-4">
                 <div className="col-sm-5 px-sm-0">
                   <div
-                    className="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white" style={{lineHeight:2}}
+                    className="d-flex align-items-center justify-content-between py-1 px-3" style={{lineHeight:2}}
                   >
-                    <span className="small text-uppercase text-gray mx-4 no-select"
-                      >Quantity</span>
-                    <div className="quantity">
-                      <button className="dec-btn p-0" onClick={handeDecrease}>
-                        <i className="fas fa-caret-left"></i>
-                      </button>
-                      <input
-                        className="form-control border-0 shadow-0 p-0"
-                        type="text"
-                        value={quantity}
-                      />
-                      <button className="inc-btn p-0" onClick={handleIncrease}>
-                        <i className="fas fa-caret-right"></i>
-                      </button>
-                    </div>
+                    <h6 className="text-uppercase text-gray no-select"
+                      >You save <span class=" ms-3 badge bg-primary">{item.price-item.discount_price}</span></h6>
                   </div>
                 </div>
                 <div className="col-sm-3 ps-sm-0">
                   <Link
                     className="btn btn-success btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" style={{textDecorationLine:"none"}}
-                    to="/cart">
+                    onClick={() =>{
+                      dispatch(addToCart(item.id))
+                    }
+                    }
+                    to="/cart"
+                    >
                       Add to cart
                       </Link>
                 </div>

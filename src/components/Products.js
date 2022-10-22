@@ -22,7 +22,7 @@
     useEffect(( ) => {
       const fetchData = async () => {
         try {
-            const res = await axios.get("/api/products/");
+            const res = await axios.get("/api/shop/products/");
             setItems(res.data);
             console.log("data from backend :",res.data)
         }

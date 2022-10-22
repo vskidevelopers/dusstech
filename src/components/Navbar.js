@@ -11,7 +11,7 @@ const Navbar = () => {
     const authLinks= (
         <>
             <li className="nav-item">
-                <Link className="nav-link" to="#">
+                <Link className="nav-link" to="/cart">
                     {" "}
                     <i className="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart
                     <small className="text-gray">(2)</small>

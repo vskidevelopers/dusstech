@@ -13,7 +13,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import get_user_model
 
 from  .models import Product, CartItem, Cart
-from .serializers import CartSerializer, ProductSerializer, UserCreateSerializer, UserSerializer
+from .serializers import CartSerializer, ProductSerializer, UserCreateSerializer, UserSerializer, CartItemSerializer
 User=get_user_model()
 # Create your views here.
 class RegisterView(APIView):
@@ -39,8 +39,6 @@ class RetrieveUserView(APIView):
 
         return Response(user.data, status=status.HTTP_200_OK)
 
-
-
 class ProductView(viewsets.ModelViewSet):
     serializer_class=ProductSerializer
     queryset = Product.objects.all()
@@ -52,35 +50,91 @@ class CartItemDeleteView(DestroyAPIView):
 
 class CartView(APIView):
     serializer_class = CartSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     def get(self,request, *args, **kwargs):
         try:
             user = User.objects.get(pk=int(kwargs.get('id')))
             cart = Cart.objects.get(user=user.id, ordered=False)
+            cart_items=CartItem.objects.filter(
+                user=user,
+                ordered=False,
+                cart=cart
+            )
             print("#######")
             print("CART :",CartSerializer(cart).data)
+            print("CartItems in cart >",CartItemSerializer(cart_items, many=True).data)
             print("user :",user)
-            return Response(status=status.HTTP_200_OK, data={"Cart ": CartSerializer(cart).data})
+            return Response(status=status.HTTP_200_OK, data={"cart": CartSerializer(cart).data, "cart_items":CartItemSerializer(cart_items, many=True).data})
         except ObjectDoesNotExist:
-            raise Http404("You do not have an active order")
+            return Response({"message": "You do not have an active order"})
 
+class AddToCartView(APIView):
+    def post(self, request, *args, **kwargs):
+        print("### request ### >>>",request)
+        print("### REQUEST.USER ### >>>",request.user)
+        print("### REQUEST.DATA ### >>>",request.data)
+        slug = request.data.get('slug', None)
+        if slug is None:
+            return Response({"message": "Invalid request"}, status=status.HTTP_400_BAD_REQUEST)
 
+        product = get_object_or_404(Product, slug=slug)
+        print("### Product ### >>>",product)
 
+        cart_item_qs = CartItem.objects.filter(
+            item=product,
+            user=request.user,
+            ordered=False
+        )
 
-# class CartViewSet(viewsets.ModelViewSet):
-#     queryset =Cart.objects.all().order_by('id')
-#     serializer_class=CartSerializer
+        cart_qs = Cart.objects.filter(user=request.user, ordered=False)
+        if cart_qs.exists():
+            print("*** CART EXISTS!!!")
+            cart = cart_qs[0]
+            if cart_item_qs.exists():
+                print("*** CART ITEM EXISTS!!!")
+                cart_item = cart_item_qs.first()
+                cart_item.quantity += 1
+                cart_item.save()
 
-#     @action(methods=['get'], detail=True,url_path='cart/(?P<userId>[^/.]+)', url_name='cart')
-#     def get_cart(self, request, *args, **kwargs,):
-#         try:
-#             user = User.objects.get(pk=int(kwargs.get('userId')))
-#             cart=Cart.objects.get(user=user.id
-#             )
-#             print("#######")
-#             print("CART :",CartSerializer(cart).data)
-#             print("user :",user)
-#             return Response(status=status.HTTP_200_OK, data={"Cart ": CartSerializer(cart).data})
-#         except ObjectDoesNotExist:
-#             raise Http404("You do not have an active cartorder")
+                print("### NEW CART-ITEM>>>",cart_item)
+                print("### NEW CART-ITEM QUANTITY>>>",cart_item.quantity)
+
+            else:
+                print("*** CART ITEM DOESN'T ITEM EXISTS!!!")
+                cart_item = CartItem.objects.create(
+                    item=product,
+                    user=request.user,
+                    cart=cart,
+                    ordered=False
+                )
+                cart_item.save()
+                print("*** NEW CART ITEM SAVED!!!")
+
+            return Response(status=status.HTTP_200_OK)
+
+        else:
+            print("*** CART DOESN'T EXISTS!!!")
+            ordered_date = timezone.now()
+            cart = Cart.objects.create(
+                user=request.user, ordered_date=ordered_date)
+            if cart_item_qs.exists():
+                print("*** CART ITEM EXISTS!!!")
+                cart_item = cart_item_qs.first()
+                cart_item.quantity += 1
+                cart_item.save()
+
+                print("### NEW CART-ITEM>>>",cart_item)
+                print("### NEW CART-ITEM QUANTITY>>>",cart_item.quantity)
+            else:
+                print("*** CART ITEM DOESN'T ITEM EXISTS!!!")
+                cart_item = CartItem.objects.create(
+                    item=product,
+                    user=request.user,
+                    cart=cart,
+                    ordered=False
+                )
+                cart_item.save()
+                print("*** NEW CART ITEM SAVED!!!")
+
+            return Response(status=status.HTTP_200_OK)
