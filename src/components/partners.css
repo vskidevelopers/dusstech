@@ -1,0 +1,26 @@
+.embla {
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  flex: 0 0 auto;
+  min-width: 0;
+  padding: 4rem 2rem; /* Adjust padding as needed */
+}
+
+.embla__slide__img {
+  max-width: auto;
+  height: 10rem;
+  display: block;
+}

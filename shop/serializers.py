@@ -4,7 +4,7 @@ from django.core import exceptions
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
-from .models import Product,CartItem,Cart
+from .models import Product,CartItem,Cart,Team
 User=get_user_model()
 
 class UserCreateSerializer(serializers.ModelSerializer):
@@ -86,3 +86,8 @@ class CartSerializer(serializers.ModelSerializer):
     
     # def get_total(self, obj):
     #     return obj.get_total()
+
+class TeamSerializer(serializers.ModelSerializer):
+        class Meta:
+            model=Team
+            fields= '__all__'

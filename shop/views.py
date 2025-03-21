@@ -12,8 +12,8 @@ from rest_framework.permissions import IsAuthenticated
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import get_user_model
 
-from  .models import Product, CartItem, Cart
-from .serializers import CartSerializer, ProductSerializer, UserCreateSerializer, UserSerializer, CartItemSerializer
+from  .models import Product, CartItem, Cart,Team
+from .serializers import CartSerializer, ProductSerializer, UserCreateSerializer, UserSerializer, CartItemSerializer,TeamSerializer
 User=get_user_model()
 # Create your views here.
 class RegisterView(APIView):
@@ -138,3 +138,7 @@ class AddToCartView(APIView):
                 print("*** NEW CART ITEM SAVED!!!")
 
             return Response(status=status.HTTP_200_OK)
+
+class TeamView(viewsets.ModelViewSet):
+    serializer_class=TeamSerializer
+    queryset = Team.objects.all()

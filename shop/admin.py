@@ -1,11 +1,13 @@
 from django.contrib import admin
-from .models import Category, Product,Cart,CartItem
+from .models import Category, Product,Cart,CartItem,Team
 from django.contrib.auth import get_user_model
 
 User=get_user_model()
 class UserAdmin(admin.ModelAdmin):
     list_display = ("id","username", "email","is_admin","is_staff","password", "is_superuser")
 
+class TeamAdmin(admin.ModelAdmin):
+    list_display=("id","name","position")
 
 class ProductAdmin(admin.ModelAdmin):
     exclude=('slug',)
@@ -30,3 +32,4 @@ admin.site.register(Cart,CartAdmin)
 admin.site.register(CartItem)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category)
+admin.site.register(Team,TeamAdmin)

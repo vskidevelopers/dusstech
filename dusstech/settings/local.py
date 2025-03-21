@@ -108,6 +108,7 @@ WSGI_APPLICATION = 'dusstech.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -115,11 +116,19 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'vista90210',
         'HOST': 'localhost',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
-
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': '7eXt8vSKGB2tB2G4RKvL',
+#         'HOST': 'containers-us-west-182.railway.app',
+#         'PORT': '7007',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.template.defaultfilters import slugify
+from django.urls import reverse
 from django.conf import settings
 
 
@@ -186,3 +187,30 @@ class CartItem(models.Model):
             return self.get_total_discount_item_price()
         return self.get_total_item_price()
 
+class Team(models.Model):
+
+    display_pic=models.ImageField(upload_to='profile_pics/', height_field=None, width_field=None, max_length=None)
+    name=models.CharField(max_length=50)
+    position=models.CharField(max_length=100)
+    facebook=models.URLField(max_length=200)
+    twitter=models.URLField(max_length=200)
+    instagram=models.URLField(max_length=200)
+
+    class Meta:
+        verbose_name =("Team")
+        verbose_name_plural =("Team")
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("Team_detail", kwargs={"pk": self.pk})
+    
+    @property
+    def imageURL(self):
+        try:
+            url = self.display_pic.url
+        except:
+            url = ''
+        print(" ### URL ###", +url)
+        return url
