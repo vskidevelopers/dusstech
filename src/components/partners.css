@@ -49,11 +49,11 @@
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
-  text-align: right;
+  text-align: left;
 }
 
 .header-content .title {
-  font-size: 48px;
+  font-size: 38px;
   font-weight: bold;
   text-transform: capitalize;
 }
@@ -77,6 +77,6 @@
 
 @media (min-width: 768px) {
   .background-text .background-title {
-    font-size: 72px;
+    font-size: 120px;
   }
 }
