@@ -54,6 +54,17 @@ function Partners() {
   ];
   return (
     <div className="embla">
+      <div className="partner-section" ref={ref}>
+        <div className="header-content">
+          <h2 className="subtitle">our partners</h2>
+          <h1 className="title">
+            Powerful Collaborations: Trusted Partnerships for Success
+          </h1>
+        </div>
+        <div className="background-text">
+          <h1 className="background-title">Partners</h1>
+        </div>
+      </div>
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {logos?.map((logo, index) => (

@@ -24,3 +24,59 @@
   height: 10rem;
   display: block;
 }
+
+.partner-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.header-content {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .header-content {
+    width: 50%;
+  }
+}
+
+.header-content .subtitle {
+  color: #fdb715;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.header-content .title {
+  font-size: 48px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.background-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  opacity: 0.1;
+}
+
+.background-text .background-title {
+  font-size: 56px;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .background-text .background-title {
+    font-size: 72px;
+  }
+}
