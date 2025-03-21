@@ -54,7 +54,7 @@ function Partners() {
   ];
   return (
     <div className="embla">
-      <div className="partner-section" ref={ref}>
+      <div className="partner-section">
         <div className="header-content">
           <h2 className="subtitle">our partners</h2>
           <h1 className="title">
